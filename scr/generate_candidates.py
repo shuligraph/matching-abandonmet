@@ -35,7 +35,7 @@ def compute_N_numba(epsilon, delta, alphas):
         beta = 1.0 - alpha
         if alpha < delta:
             Ni = estimate_N_case1(epsilon, m)
-            while Ni > 1 and (alpha ** Ni) / (delta ** Ni * factorial(Ni - 1)):
+            while Ni > 1 and 1 / factorial(Ni - 1) < epsilon / n:
                 Ni -= 1
             Ni += 1
         else:
