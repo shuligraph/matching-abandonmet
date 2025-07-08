@@ -87,17 +87,17 @@ def compute_expectation_bounds(alphas, delta, epsilon, N, pi_lower, pi_upper):
             sum_lower += m * prod
             sum_upper += m * prod
         expect_lower += pi_lower * sum_lower
-        expect_upper += pi_upper * sum_upper + epsilon / n
+        expect_upper += pi_upper * sum_upper + epsilon / (n * delta)
     return expect_lower, expect_upper
 
 
 
 # Example usage
-epsilon = 0.001
-delta = 1.000000e-06
-b=0.06359026378676357+0.06359026378676357
-c=b+0.21134413059978402+0.20759193059345998+0.4538834112332289
-alphas = [b,0.21134413059978402,0.20759193059345998,0.4538834112332289]
+epsilon = 0.00001
+delta = 0.01
+b=0.07198009646943532+0.07198009646943532
+c=b+0.1505252430731784+0.2139285951521536+0.49158596883579736
+alphas = [0.07198009646943532,0.07198009646943532,0.1505252430731784,0.2139285951521536,0.49158596883579736]
 
 # Step 1: Compute N
 N = compute_N_numba(epsilon, delta, alphas)
