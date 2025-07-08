@@ -6,8 +6,8 @@ from tqdm import tqdm
 import csv
 
 NUM_ALPHAS = 5
-EPSILON = 0.001
-DELTA_VALUES = np.linspace(1e-6, 1e-5, 10)
+EPSILON = 0.00001
+DELTA_VALUES = np.linspace(1e-1, 1e-2, 10)
 
 
 @njit
@@ -95,7 +95,7 @@ def compute_expectation_bounds(alphas, delta, epsilon, N, pi_lower, pi_upper):
             sum_lower += m * prod
             sum_upper += m * prod
         expect_lower += pi_lower * sum_lower
-        expect_upper += pi_upper * sum_upper + epsilon / n
+        expect_upper += pi_upper * sum_upper + epsilon / (n * delta)
     return expect_lower, expect_upper
 
 def generate_valid_alphas(num):
