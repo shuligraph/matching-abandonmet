@@ -88,7 +88,7 @@ def compute_expectation_bounds(alphas, delta, epsilon, N, pi_lower, pi_upper):
         beta = 1.0 - alpha
         sum_lower = 0.0
         sum_upper = 0.0
-        for m in range(1, N + 1):
+        for m in range(1, N + 2):
             prod = 1.0
             for k in range(1, m + 1):
                 prod *= alpha / (beta + k * delta)
